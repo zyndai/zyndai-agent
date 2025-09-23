@@ -92,8 +92,8 @@ if __name__ == "__main__":
         default_outbox_topic=None,
         auto_reconnect=True,
         message_history_limit=100,
-        registry_url="https://registry.p3ai.network",
-        mqtt_broker_url="mqtt://registry.p3ai.network:1883",
+        registry_url="https://registry.zynd.ai",
+        mqtt_broker_url="mqtt://registry.zynd.ai:1883",
         identity_credential_path="examples/identity/identity_cred_stock_comparison.json",
         secret_seed=os.environ["STOCK_COMPARISON_AGENT_SEED"]
     )

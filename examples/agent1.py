@@ -38,8 +38,8 @@ if __name__ == "__main__":
         default_outbox_topic=None,
         auto_reconnect=True,
         message_history_limit=100,
-        registry_url="https://registry.p3ai.network",
-        mqtt_broker_url="mqtt://registry.p3ai.network:1883",
+        registry_url="https://registry.zynd.ai",
+        mqtt_broker_url="mqtt://registry.zynd.ai:1883",
         identity_credential_path = "/Users/swapnilshinde/Desktop/p3ai/p3ai-agent/examples/identity_credential1.json",
         secret_seed = os.environ["AGENT1_SEED"]
     )
