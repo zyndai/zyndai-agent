@@ -3,3 +3,5 @@
 .env
 *.config
 dist
+
+zyndai_agent.egg-info
