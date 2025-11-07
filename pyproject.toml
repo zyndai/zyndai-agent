@@ -1,20 +1,16 @@
-[tool.poetry]
-name = "p3ai-agent"
-version = "0.1.5"
+[project]
+name = "zyndai-agent"
+version = "0.1.0"
 description = "A Langchain and Autogen wrapper that enables agents to communicate and establish identity on the P3 AI Network. This SDK provides three core capabilities: Identity Management, Agent Discovery & Search, and MQTT-based Communication."
 authors = ["Swapnil Shinde <swapnilshinde9382@gmail.com>"]
+packages = [{ include = "p3ai_agent" }]
 readme = "README.md"
-packages = [{ include = "p3ai_agent" }]  # 👈 Add this line
-
-[tool.poetry.dependencies]
-python = "^3.12"
-langchain = "^0.3.22"
-langchain-core = "^0.3.49"
-langchain-openai = "^0.3.11"
-paho-mqtt = "^2.1.0"
-base58 = "^2.1.1"
-cryptography = "^45.0.4"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.12"
+dependencies = [
+    "base58>=2.1.1",
+    "cryptography>=46.0.3",
+    "langchain>=1.0.4",
+    "langchain-core>=1.0.3",
+    "langchain-openai>=1.0.2",
+    "paho-mqtt>=2.1.0",
+]
