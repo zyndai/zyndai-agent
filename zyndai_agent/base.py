@@ -125,7 +125,7 @@ class ZyndBase(
         self.max_file_size_bytes = max_file_size_bytes
 
         # Resolve keypair
-        self.keypair = self._resolve_keypair(config)
+        self.keypair = self._resolve_keypair(config, self._entity_type)
         if not self.keypair:
             raise ValueError(
                 "Keypair not found. Set ZYND_AGENT_KEYPAIR_PATH / ZYND_SERVICE_KEYPAIR_PATH "
@@ -230,14 +230,15 @@ class ZyndBase(
         self._display_info()
 
     @staticmethod
-    def _resolve_keypair(config) -> Optional[Ed25519Keypair]:
+    def _resolve_keypair(config, entity_type: str = "agent") -> Optional[Ed25519Keypair]:
         """Resolve keypair from env vars or config.keypair_path."""
-        # Check service-specific env var first
-        env_path = os.environ.get("ZYND_SERVICE_KEYPAIR_PATH")
+        env_var = "ZYND_SERVICE_KEYPAIR_PATH" if entity_type == "service" else "ZYND_AGENT_KEYPAIR_PATH"
+        env_path = os.environ.get(env_var)
+        kp_config = config
         if env_path:
-            config.keypair_path = env_path
+            kp_config = config.model_copy(update={"keypair_path": env_path})
         try:
-            return resolve_keypair(config)
+            return resolve_keypair(kp_config)
         except ValueError:
             return None
 
